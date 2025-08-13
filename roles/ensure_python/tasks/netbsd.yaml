@@ -1,6 +1,6 @@
 ---
 - name: Check for Python
-  ansible.builtin.raw: "which python"
+  ansible.builtin.raw: "which python313"
   ignore_errors: true
   register: check_result
   changed_when:
@@ -13,6 +13,7 @@
     "export PATH PKG_PATH &&"
     "pkg_add -u python313"
   when: check_result.changed
+  become: true
 
 - name: Print Python Version
   ansible.builtin.raw: "python --version"
