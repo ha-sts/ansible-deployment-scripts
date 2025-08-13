@@ -19,5 +19,7 @@
   ansible.builtin.raw: "python3.13 --version"
   ignore_errors: true
   register: check_result
+  changed_when:
+    - check_result.rc != 0
   failed_when:
     - check_result.rc != 0
