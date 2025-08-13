@@ -1,0 +1,3 @@
+---
+- name: Check for Python
+  ansible.builtin.raw: "which python"
