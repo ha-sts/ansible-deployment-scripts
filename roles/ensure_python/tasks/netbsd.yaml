@@ -16,4 +16,4 @@
   become: true
 
 - name: Print Python Version
-  ansible.builtin.raw: "python --version"
+  ansible.builtin.raw: "python3.13 --version"
