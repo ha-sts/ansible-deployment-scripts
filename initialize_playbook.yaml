@@ -1,10 +1,12 @@
 # playbook.yml
 - hosts: rts
   gather_facts: false
-  include_role:
-    name: ensure_python
-    # FIXME: Should this be decided from a preconfigured OS type?
-    tasks_from: netbsd.yml
+  tasks:
+  - name: include apt tasks
+    include_role:
+      name: ensure_python
+      # FIXME: Should this be decided from a preconfigured OS type?
+      tasks_from: netbsd.yml
 
 
 #  tasks:
