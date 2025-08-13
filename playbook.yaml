@@ -1,0 +1,4 @@
+---
+- hosts: rts
+  roles:
+    - common
