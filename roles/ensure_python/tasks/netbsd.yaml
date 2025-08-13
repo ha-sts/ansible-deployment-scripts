@@ -17,3 +17,7 @@
 
 - name: Print Python Version
   ansible.builtin.raw: "python3.13 --version"
+  ignore_errors: true
+  register: check_result
+  failed_when:
+    - check_result.rc != 0
