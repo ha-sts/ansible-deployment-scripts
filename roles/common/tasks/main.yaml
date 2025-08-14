@@ -8,11 +8,6 @@
     name: "{{ inventory_hostname_short }}"
   become: true
 
-- name: Install the Mosquitto package
-  ansible.builtin.package:
-    name: mosquitto
-    state: present
-
 #- name: Include tasks for NetBSD
 #  import_tasks: netbsd.yaml
 #  when: ansible_facts['os_family']|lower == 'netbsd'
@@ -21,7 +16,7 @@
 #  import_tasks: rpi.yaml
 #  when: ansible_facts['os_family']|lower == 'rasberrypios'
 
-## roles/example/tasks/main.yml
+## roles/example/tasks/main.yaml
 #- name: Install the correct web server for RHEL
 #  import_tasks: redhat.yml
 #  when: ansible_facts['os_family']|lower == 'redhat'

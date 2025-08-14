@@ -1,0 +1,8 @@
+---
+mqtt_users:
+  - username: useralpha
+    password: passwordalpha
+  - username: userbeta
+    password: passwordbeta
+  - username: usergamma
+    password: passwordgamma

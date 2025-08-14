@@ -1,0 +1,18 @@
+---
+- name: Install the Mosquitto package
+  ansible.builtin.package:
+    name: mosquitto
+    state: present
+  become: true
+
+- name: Configure the Mosquitto package
+  ansible.builtin.template:
+    src: templates/mosquitto.conf.j2
+    dest: /usr/pkg/etc/mosquitto.conf
+  become: true
+
+- name: Configure the Mosquitto users
+  ansible.builtin.template:
+    src: templates/mosquitto_pwfile.j2
+    dest: /usr/pkg/etc/mosquitto_pwfile
+  become: true
