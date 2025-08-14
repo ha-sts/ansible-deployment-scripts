@@ -1,4 +1,8 @@
 ---
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
+
 - name: Include tasks for NetBSD
   import_tasks: netbsd.yaml
   when: ansible_facts['os_family']|lower == 'netbsd'
