@@ -17,6 +17,12 @@
     dest: /usr/pkg/etc/mosquitto_pwfile
   become: true
 
+- name: Copy startup script
+  ansible.builtin.copy:
+    src: /usr/pkg/share/examples/rc.d/mosquitto
+    dest: /etc/rc.d/mosquitto
+  become: true
+
 - name: Ensure Mosquitto is enabled on startup
   ansible.builtin.lineinfile:
     path: /etc/rc.conf
