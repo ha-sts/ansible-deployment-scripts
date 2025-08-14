@@ -22,6 +22,7 @@
     src: /usr/pkg/share/examples/rc.d/mosquitto
     dest: /etc/rc.d/mosquitto
     remote_src: true
+    mode: '0555'
   become: true
 
 - name: Ensure Mosquitto is enabled on startup
