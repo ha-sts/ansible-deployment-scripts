@@ -1,5 +1,3 @@
 ---
-- name: Set the hostname
-  ansible.builtin.hostname:
-    name: "{{ inventory_hostname_short }}"
-  become: true
+#- name: Do Something
+#  ansible.builtin.command: "echo 'Do Something'"
