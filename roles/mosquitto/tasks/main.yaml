@@ -16,3 +16,9 @@
     src: templates/mosquitto_pwfile.j2
     dest: /usr/pkg/etc/mosquitto_pwfile
   become: true
+
+- name: Ensure Mosquitto is enabled on startup
+  ansible.builtin.lineinfile:
+    path: /etc/rc.conf
+    regexp: '^mosquitto='
+    line: mosquitto=YES
