@@ -7,11 +7,7 @@
     - check_result.rc != 0
 
 - name: Install Python
-  ansible.builtin.raw: >
-    "PATH=/usr/pkg/sbin:/usr/pkg/bin:$PATH &&"
-    "PKG_PATH=https://cdn.NetBSD.org/pub/pkgsrc/packages/NetBSD/aarch64/10.0_2025Q1/All/ &&"
-    "export PATH PKG_PATH &&"
-    "pkg_add -u python313"
+  ansible.builtin.raw: "PATH=/usr/pkg/sbin:/usr/pkg/bin:$PATH && PKG_PATH=https://cdn.NetBSD.org/pub/pkgsrc/packages/NetBSD/aarch64/10.0_2025Q1/All/ && export PATH PKG_PATH && pkg_add -u python313"
   when: check_result.changed
   become: true
 
