@@ -21,6 +21,7 @@
   ansible.builtin.copy:
     src: /usr/pkg/share/examples/rc.d/mosquitto
     dest: /etc/rc.d/mosquitto
+    remote_src: true
   become: true
 
 - name: Ensure Mosquitto is enabled on startup
