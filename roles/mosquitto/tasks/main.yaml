@@ -22,3 +22,4 @@
     path: /etc/rc.conf
     regexp: '^mosquitto='
     line: mosquitto=YES
+  become: true
