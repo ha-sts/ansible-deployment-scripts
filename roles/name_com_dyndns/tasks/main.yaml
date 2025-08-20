@@ -11,4 +11,4 @@
     name: "name_com_dyndns"
     minute: "3"
     hour: "0"
-    job: "/usr/pkg/bin/python3.13 /usr/pkg/bin/name_com_dyndns.py --username ? --token ? --domain ? --hostname ? "
+    job: "/usr/pkg/bin/python3.13 /usr/pkg/bin/name_com_dyndns.py --username {{ name_com_dyndns_username }} --token {{ name_com_dyndns_token }} --domain {{ name_com_dyndns_domain }} --hostname {{ name_com_dyndns_hostname }}"
