@@ -5,7 +5,7 @@
     - role: mosquitto
     - role: name_com_dyndns
       vars:
-        name_com_dyndns_username: {{ name_com_dyndns_username }}
-        name_com_dyndns_token: {{ name_com_dyndns_token }}
-        name_com_dyndns_domain: {{ name_com_dyndns_domain }}
-        name_com_dyndns_hostname: {{ name_com_dyndns_hostname }}
+        name_com_dyndns_username: "{{ name_com_dyndns_username }}"
+        name_com_dyndns_token: "{{ name_com_dyndns_token }}"
+        name_com_dyndns_domain: "{{ name_com_dyndns_domain }}"
+        name_com_dyndns_hostname: "{{ name_com_dyndns_hostname }}"
