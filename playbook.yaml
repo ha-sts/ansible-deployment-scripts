@@ -3,3 +3,4 @@
   roles:
     - common
     - mosquitto
+    - name_com_dyndns

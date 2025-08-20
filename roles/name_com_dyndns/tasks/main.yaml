@@ -1,0 +1,14 @@
+---
+- name: Copy name_com_dyndns
+  ansible.builtin.copy:
+    src: files/name_com_dyndns.py
+    dest: /usr/pkg/bin/name_com_dyndns.py
+    mode: '0555'
+  become: true
+
+- name: Create cron job for name_com_dyndns
+  ansible.builtin.cron:
+    name: "name_com_dyndns"
+    minute: "3"
+    hour: "0"
+    job: "/usr/pkg/bin/python3.13 /usr/pkg/bin/name_com_dyndns.py --username ? --token ? --domain ? --hostname ? "
