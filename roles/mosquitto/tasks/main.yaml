@@ -7,7 +7,7 @@
 
 - name: Configure the Mosquitto package
   ansible.builtin.template:
-    src: templates/mosquitto.conf.j2
+    src: templates/mosquitto.conf.short.j2
     dest: /usr/pkg/etc/mosquitto.conf
   become: true
 
