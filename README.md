@@ -18,7 +18,7 @@ Steps to Run
 3. Create a venv to run the project.
 
 4. Run the project.
-   * For all nodes: `ansible-playbook --verbose -i inventory.ini playbook.yaml
+   * For all nodes: `ansible-playbook --verbose --inventory inventory.ini playbook.yaml
 `
    * For one node: ...
 
