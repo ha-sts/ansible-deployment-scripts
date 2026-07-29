@@ -7,3 +7,14 @@
     size: 4096
     format_mismatch: convert
     regenerate: never
+
+- name: LOCAL Create CA CSR if not existing
+  local_action: community.crypto.openssl_csr
+  args:
+    path: ./ca_request.csr
+    privatekey_path: ./ca_private.key
+    country_name: US
+    organization_name: Port 8080
+    email_address: dwilliams@example.com
+    common_name: Sprawl CA Cert
+
