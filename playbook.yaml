@@ -2,6 +2,8 @@
 - hosts: rts
   roles:
     - role: common
+    # Should this be here, or in a generic hosts all group thing?
+    - role: local_ca
     - role: mosquitto
     - role: name_com_dyndns
       vars:

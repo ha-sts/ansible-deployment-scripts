@@ -1,0 +1,9 @@
+---
+- name: LOCAL Create CA Key if not existing
+  local_action: community.crypto.openssl_privatekey
+    args:
+      path: ./ca_private.key
+      type: RSA
+      size: 4096
+      format_mismatch: convert
+      regenerate: never
