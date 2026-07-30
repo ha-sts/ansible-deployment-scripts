@@ -18,9 +18,9 @@
     email_address: "{{ certificate_email }}"
     common_name: "{{ certificate_common_name }}"
     create_subject_key_identifier: true
-    authority_key_identifier: "keyid:always,issuer"
     basicConstraints:
       - "CA:true"
+      - "pathlen:1"
     basic_constraints_critical: true
     keyUsage:
       - "digitalSignature"
