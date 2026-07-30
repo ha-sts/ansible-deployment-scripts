@@ -17,3 +17,23 @@
     organization_name: "{{ certificate_organization }}"
     email_address: "{{ certificate_email }}"
     common_name: "{{ certificate_common_name }}"
+    subject_key_identifier: "hash"
+    authority_key_identifier: "keyid:always,issuer"
+    basicConstraints:
+      - "CA:true"
+    basic_constraints_critical: true
+    keyUsage:
+      - "digitalSignature"
+      - "cRLSign"
+      - "keyCertSign"
+    key_usage_critical: true
+
+- name: LOCAL Create CA Certificate if not existing
+  local_action: community.crypto.x509_certificate
+  args:
+    path: "{{ certificate_directory }}/ca_certificate.crt"
+    privatekey_path: "{{ certificate_directory }}/ca_private.key"
+    csr_path: "{{ certificate_directory }}/ca_request.csr"
+    provider: selfsigned
+    selfsigned_not_before: "+0s"
+    selfsigned_not_after: "+3650d"
