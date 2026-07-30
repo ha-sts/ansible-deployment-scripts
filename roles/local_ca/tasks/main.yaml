@@ -17,7 +17,7 @@
     organization_name: "{{ certificate_organization }}"
     email_address: "{{ certificate_email }}"
     common_name: "{{ certificate_common_name }}"
-    subject_key_identifier: "hash"
+    create_subject_key_identifier: true
     authority_key_identifier: "keyid:always,issuer"
     basicConstraints:
       - "CA:true"
