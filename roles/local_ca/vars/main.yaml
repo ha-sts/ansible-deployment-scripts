@@ -1,0 +1,8 @@
+---
+certificate_directory: "./certificates"
+certificate_type: "RSA"
+certificate_size: "4096"
+certificate_country: "US"
+certificate_organization: "Organization"
+certificate_email: "baduser@example.com"
+certificate_common_name: "certificate.example.com"

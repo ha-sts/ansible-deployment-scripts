@@ -2,19 +2,19 @@
 - name: LOCAL Create CA Key if not existing
   local_action: community.crypto.openssl_privatekey
   args:
-    path: ./ca_private.key
-    type: RSA
-    size: 4096
+    path: "{{ local_ca.certificate_directory }}/ca_private.key"
+    type: "{{ local_ca.certificate_type }}"
+    size: "{{ local_ca.certificate_size }}"
     format_mismatch: convert
     regenerate: never
 
 - name: LOCAL Create CA CSR if not existing
   local_action: community.crypto.openssl_csr
   args:
-    path: ./ca_request.csr
-    privatekey_path: ./ca_private.key
-    country_name: US
-    organization_name: Port 8080
-    email_address: dwilliams@example.com
-    common_name: Sprawl CA Cert
+    path: "{{ local_ca.certificate_directory }}/ca_request.csr"
+    privatekey_path: "{{ local_ca.certificate_directory }}/ca_private.key"
+    country_name: "{{ local_ca.certificate_country }}"
+    organization_name: "{{ local_ca.certificate_organization }}"
+    email_address: "{{ local_ca.certificate_email }}"
+    common_name: "{{ local_ca.certificate_common_name }}"
 

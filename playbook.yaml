@@ -4,6 +4,11 @@
     - role: common
     # Should this be here, or in a generic hosts all group thing?
     - role: local_ca
+      vars:
+        certificate_directory: "{{ hostvars[inventory_hostname].certificates_directory }}"
+        certificate_organization: "{{ hostvars[inventory_hostname].ca_certificate_organization }}"
+        certificate_email: "{{ hostvars[inventory_hostname].ca_certificate_email }}"
+        certificate_common_name: "{{ hostvars[inventory_hostname].ca_certificate_common_name }}"
     - role: mosquitto
     - role: name_com_dyndns
       vars:
