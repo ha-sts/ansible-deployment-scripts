@@ -2,19 +2,18 @@
 - name: LOCAL Create CA Key if not existing
   local_action: community.crypto.openssl_privatekey
   args:
-    path: "{{ local_ca.certificate_directory }}/ca_private.key"
-    type: "{{ local_ca.certificate_type }}"
-    size: "{{ local_ca.certificate_size }}"
+    path: "{{ certificate_directory }}/ca_private.key"
+    type: "{{ certificate_type }}"
+    size: "{{ certificate_size }}"
     format_mismatch: convert
     regenerate: never
 
 - name: LOCAL Create CA CSR if not existing
   local_action: community.crypto.openssl_csr
   args:
-    path: "{{ local_ca.certificate_directory }}/ca_request.csr"
-    privatekey_path: "{{ local_ca.certificate_directory }}/ca_private.key"
-    country_name: "{{ local_ca.certificate_country }}"
-    organization_name: "{{ local_ca.certificate_organization }}"
-    email_address: "{{ local_ca.certificate_email }}"
-    common_name: "{{ local_ca.certificate_common_name }}"
-
+    path: "{{ certificate_directory }}/ca_request.csr"
+    privatekey_path: "{{ certificate_directory }}/ca_private.key"
+    country_name: "{{ certificate_country }}"
+    organization_name: "{{ certificate_organization }}"
+    email_address: "{{ certificate_email }}"
+    common_name: "{{ certificate_common_name }}"
