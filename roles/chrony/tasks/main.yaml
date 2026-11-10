@@ -4,3 +4,9 @@
     name: chrony
     state: present
   become: true
+
+- name: Configure the Chrony package
+  ansible.builtin.template:
+    src: templates/chrony.conf.short.j2
+    dest: /usr/pkg/etc/chrony.conf
+  become: true

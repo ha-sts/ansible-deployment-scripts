@@ -13,6 +13,8 @@
   roles:
     - role: common
     - role: chrony
+      vars:
+        chrony_networks: "{{ hostvars[inventory_hostname].chrony_networks }}"
     - role: mosquitto
     - role: name_com_dyndns
       vars:

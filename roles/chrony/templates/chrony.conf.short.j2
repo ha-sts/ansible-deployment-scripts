@@ -1,0 +1,10 @@
+pool pool.ntp.org iburst
+
+driftfile /var/lib/chrony/drift
+ntsdumpdir /var/lib/chrony
+
+logchange 0.5
+
+{% for item in chrony_networks %}
+allow {{ item }}
+{% endfor %}
