@@ -10,3 +10,25 @@
     src: templates/chrony.conf.short.j2
     dest: /usr/pkg/etc/chrony.conf
   become: true
+
+- name: Copy startup script
+  ansible.builtin.copy:
+    src: /usr/pkg/share/examples/rc.d/chronyd
+    dest: /etc/rc.d/chronyd
+    remote_src: true
+    mode: '0555'
+  become: true
+
+- name: Ensure Chrony is enabled on startup
+  ansible.builtin.lineinfile:
+    path: /etc/rc.conf
+    regexp: '^chronyd='
+    line: chronyd=YES
+  become: true
+
+- name: Ensure NTP is disabled on startup
+  ansible.builtin.lineinfile:
+    path: /etc/rc.conf
+    regexp: '^ntpd='
+    line: ntpd=NO
+  become: true
