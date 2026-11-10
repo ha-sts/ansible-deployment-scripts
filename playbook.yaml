@@ -12,6 +12,7 @@
 - hosts: rts
   roles:
     - role: common
+    - role: chrony
     - role: mosquitto
     - role: name_com_dyndns
       vars:
