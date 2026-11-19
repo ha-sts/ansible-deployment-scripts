@@ -11,11 +11,37 @@
     dest: /usr/pkg/etc/mosquitto.conf
   become: true
 
-- name: Configure the Mosquitto users
-  ansible.builtin.template:
-    src: templates/mosquitto_pwfile.j2
-    dest: /usr/pkg/etc/mosquitto_pwfile
+# NOTE: Making sure the password file exists, even if it's empty
+- name: Check that the Mosquitto password file exists
+  ansible.builtin.stat:
+    get_attributes: false
+    get_checksum: false
+    get_mime: false
+    path: /usr/pkg/etc/mosquitto_pwfile
+  register: stat_result
   become: true
+
+- name: Create the Mosquitto password file if it doesnt exist
+  ansible.builtin.file:
+    group: mosquitto
+    mode: 0700
+    owner: mosquitto
+    path: /usr/pkg/etc/mosquitto_pwfile
+    state: touch
+  become: true
+  when: not stat_result.stat.exists
+
+# NOTE: This needs to use the mosquitto_passwd command to add each of the users.
+- name: Configure the Mosquitto users
+  ansible.builtin.command:
+    argv:
+      - "-b"
+      - "/usr/pkg/etc/mosquitto_pwfile"
+      - "{{ item.username }}"
+      - "{{ item.password }}"
+    cmd: "mosquitto_passwd"
+  become: true
+  with_items: "{{ mqtt_users }}"
 
 - name: Copy startup script
   ansible.builtin.copy:
