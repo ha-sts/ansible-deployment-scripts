@@ -22,7 +22,7 @@
   become: true
 
 - name: Create the Mosquitto password file if it doesnt exist
-  file:
+  ansible.builtin.file:
     path: /usr/pkg/etc/mosquitto_pwfile
     state: touch
   become: true
