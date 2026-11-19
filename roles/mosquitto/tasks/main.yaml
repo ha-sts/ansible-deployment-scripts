@@ -12,16 +12,23 @@
   become: true
 
 # NOTE: Making sure the password file exists, even if it's empty
-#- name: Check that the Mosquitto password file exists
-#  ansible.builtin.stat:
-#    get_attributes: false
-#    get_checksum: false
-#    get_mime: false
-#    path: /usr/pkg/etc/mosquitto_pwfile
-#  register: stat_result
-#  become: true
+- name: Check that the Mosquitto password file exists
+  ansible.builtin.stat:
+    get_attributes: false
+    get_checksum: false
+    get_mime: false
+    path: /usr/pkg/etc/mosquitto_pwfile
+  register: stat_result
+  become: true
 
 - name: Create the Mosquitto password file if it doesnt exist
+  file:
+    path: /usr/pkg/etc/mosquitto_pwfile
+    state: touch
+  become: true
+  when: not stat_result.stat.exists
+
+- name: Ensure the Mosquitto password file has the correct permissions
   ansible.builtin.file:
     group: mosquitto
     mode: 0700
